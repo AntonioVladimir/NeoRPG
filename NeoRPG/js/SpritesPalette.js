@@ -7,7 +7,7 @@ function SpritesPaletted(Sdata) {
 	this.sWidth = parseInt(Sdata.tilewidth);
 	this.sHeight = parseInt(Sdata.tileheight);
 
-	this.firstSpriteInOne = parseInt(Sdata.firstgid);
+	this.firstSpriteOnOne = parseInt(Sdata.firstgid);
 
 	this.widthIS = this.imageWidth / this.sWidth;
 	this.heightIS = this.imageHeight/ this.sHeight;
@@ -16,14 +16,14 @@ function SpritesPaletted(Sdata) {
 	this.sprites = [];
 
 	for (s = 0; s < this.allSprites; s++) {
-		var nowIdInZero = this.firstSpriteInOne - 1 + s;
+		var nowIdInZero = this.firstSpriteOnOne - 1 + s;
 		this.sprites.push(new Sprite(this.urlImage, nowIdInZero, this.getPossitionIDSprite(nowIdInZero)));
 	}
 }
 
-SpritesPaletted.prototype.getPossitionIDSprite = function(idSpriteInZero){
-	var y = Math.floor(idSpriteInZero / this.widthIS);
-	var x = idSpriteInZero % this.widthIS;
+SpritesPaletted.prototype.getPossitionIDSprite = function(idSpriteOnZero){
+	var y = Math.floor(idSpriteOnZero / this.widthIS);
+	var x = idSpriteOnZero % this.widthIS;
 
 	return new Point(x * this.sWidth, y * this.sHeight);
 }
