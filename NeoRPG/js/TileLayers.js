@@ -1,4 +1,4 @@
-function TileLayers(layerData, zIndex, widthFromTiles, heightFromTiles, SpritePalette){
+function TileLayers(layerData, zIndex, widthFromTiles, heightFromTiles, SpritePalettes){
 	this.widthFromTiles = parseInt(layerData.width);
 	this.heightFromTiles = parseInt(layerData.height);
 	this.x = parseInt(layerData.x);
