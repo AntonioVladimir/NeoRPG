@@ -7,16 +7,19 @@ function Map(objectJSON) {
 	this.widthFromTiles = parseInt(objectJSON.tilewidth);
 	this.heightFromTiles = parseInt(objectJSON.tileheight);
 
-	this.SpritesPalettes = [];
+	this.spritesPalettes = [];
 	this.startSpritesPalettes(objectJSON.tilesets)
 
-	this.TileLayers = [];
+	this.tileLayers = [];
+	this.startLayers(objectJSON.layers);
+
+	this.startT();
 
 }
 
 Map.prototype.startSpritesPalettes = function(layerData){
-	for (i = 0; i <layerData.length; i++) {
-		this.SpritesPalettes.push (new SpritePalettes(layerData[i]));
+	for (i = 0; i < layerData.length; i++) {
+		this.spritesPalettes.push(new SpritesPaletted(layerData[i]));
 	}
 }
 
@@ -24,7 +27,7 @@ Map.prototype.startLayers = function(layerData){
 	for (i = 0; i < layerData.length; i++){
 		switch(layerData[i].type){
 			case "tilelayer":
-			this.TileLayers.push(new LayerMapTiles(
+			this.tileLayers.push(new TileLayers(
 				layerData[i], i, this.widthFromTiles, this.SpritePalettes));
 				break;
 			case "objectgroup":
@@ -34,34 +37,35 @@ Map.prototype.startLayers = function(layerData){
 }
 Map.prototype.startT = function(){
 	var widthMPX = this.widthSizeTiles * this.widthFromTiles;
-	var heightMPX = this.heightSizeTiles * this*heightFromTiles;
+	var heightMPX = this.heightSizeTiles * this.heightFromTiles;
 
 	var html = "";
 
-	for (lt = 0; lt < this.TileLayers.length; lt++){
-		for(t = 0; t < this.TileLayers[lt].tiles.length; t++){
-			if (this.TileLayers[lt].tiles[t] == null) {
+	for (lt = 0; lt < this.tileLayers.length; lt++){
+		for(t = 0; t < this.tileLayers[lt].tiles.length; t++){
+			if (this.tileLayers[lt].tiles[t] == null) {
 				continue;
 			}
-			var actualTile = this.TileLayers[ct].tiles[t];
+			var actualTile = this.tileLayers[ct].tiles[t];
 			html += actualTile.html;
 		}
 	}
 	document.getElementById("map").innerHTML = html;
 
-		for (lt = 0; lt < this.TileLayers.length; lt++){
-		for(t = 0; t < this.TileLayers[lt].tiles.length; t++){
-			if (this.TileLayers[lt].tiles[t] == null) {
+		for (lt = 0; lt < this.tileLayers.length; lt++){
+		for(t = 0; t < this.tileLayers[lt].tiles.length; t++){
+			if (this.tileLayers[lt].tiles[t] == null) {
 				continue;
 			}
-			var actualTile = this.TileLayers[ct].tiles[t];
+			var actualTile = this.tileLayers[ct].tiles[t];
 			actualTile.applyStyle();
 
 		}
 	}
 
-	document.getElementByTagName("body")[0].style.overflow = "hidden";
+	document.getElementsByTagName("body")[0].style.overflow = "hidden";
 }
+
 Map.prototype.update = function(){
 
 }

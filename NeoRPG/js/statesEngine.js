@@ -1,7 +1,7 @@
 var statesEngine = {
 	stateNow: null,
 	start: function() {
-
+		statesEngine.changeState(stateList.MAP)
 	},
 	changeState: function(newState){
 		switch(newState) {
@@ -12,7 +12,7 @@ var statesEngine = {
 
 				break;
 			case stateList.MAP:
-
+				statesEngine.stateNow = new StatusMap(stateList.MAP);
 				break;
 			case stateList.LEVEL:
 

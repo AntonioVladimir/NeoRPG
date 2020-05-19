@@ -8,8 +8,9 @@
 		<meta name="author" content="AVOC">
 	</head>
 	<body>
-		<h1><h1>
-		<div id="game"></div>
+		<div id="game">
+			<div id="map"> </div>
+		</div>
 		<?php
 			include_once 'app/fileLoaderJS.inc.php';
 		?>

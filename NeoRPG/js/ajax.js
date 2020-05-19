@@ -1,5 +1,5 @@
 var ajax = {
-	fileUpload: function(url){
+	fileLoad: function(url, changeDatas){
 		var petition = new XMLHttpRequest();
 
 		petition.onreadystatechange = function(){
@@ -12,7 +12,7 @@ var ajax = {
 			*/
 			if (petition.readyState == XMLHttpRequest.DONE){
 				if (petition.status == 200) {//AIG
-					console.log(JSON.parse(petition.responseText));
+					changeDatas(JSON.parse(petition.responseText));
 				}else if (petition.status == 400){//AIW
 					console.log("ERROR");
 				}else{

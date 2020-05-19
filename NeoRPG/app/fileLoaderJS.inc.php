@@ -2,19 +2,22 @@
 
 $date = new DateTime();
 
-$JSfonts = array(
-	'js/stateList.js',
+$JSfonts = array(	
 	'js/Rectangle.js',
-	'js/Point.js',
 	'js/Sprite.js',
-	'js/SpritesPalette.js',
 	'js/Tile.js',
 	'js/TileLayers.js',
+	'js/SpritesPalette.js',
+	'js/stateList.js',
 	'js/ajax.js',
+	'js/StatusMap.js',
+	'js/statesEngine.js',
+	'js/Point.js',
+	'js/Map.js',
 	'js/keyboard.js',
 	'js/gamepad.js',
-	'js/mainLoop.js',
 	'js/dimensions.js',
+	'js/mainLoop.js',
 	'js/start.js'
 );
 
